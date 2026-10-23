@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DocMind</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; background: #f7f7f9; color: #1c1c1e; }
+    h1 { margin-bottom: .2rem; }
+    .sub { color: #666; margin-top: 0; }
+    .card { background: #fff; border-radius: 12px; padding: 1rem; margin: 1rem 0; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+    button { background: #4f46e5; color: #fff; border: 0; border-radius: 8px; padding: .6rem 1.1rem; font-size: 1rem; cursor: pointer; }
+    button:disabled { background: #aaa; cursor: not-allowed; }
+    input[type=text] { width: 100%; box-sizing: border-box; padding: .6rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 8px; margin-bottom: .6rem; }
+    .status { color: #555; margin-top: .6rem; }
+    .meta { font-size: .85rem; color: #4f46e5; margin-bottom: .3rem; }
+    .result { border-bottom: 1px solid #eee; padding: .7rem 0; }
+    .result:last-child { border-bottom: 0; }
+  </style>
+</head>
+<body>
+  <h1>📄 DocMind</h1>
+  <p class="sub">ارفع ملفاً (PDF أو TXT أو MD) ثم اسأل عنه بأي لغة.</p>
+
+  <div class="card">
+    <input type="file" id="file" accept=".pdf,.txt,.md">
+    <button id="uploadBtn">رفع الملف</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="card">
+    <input type="text" id="question" placeholder="اكتب سؤالك هنا..." disabled>
+    <button id="askBtn" disabled>اسأل</button>
+  </div>
+
+  <div class="card" id="results" hidden></div>
+
+  <script>
+    let sessionId = null;
+    const $ = (id) => document.getElementById(id);
+    const setStatus = (msg) => { $("status").textContent = msg; };
+
+    $("uploadBtn").onclick = async () => {
+      const file = $("file").files[0];
+      if (!file) return setStatus("اختر ملفاً أولاً");
+      setStatus("جاري المعالجة...");
+      const form = new FormData();
+      form.append("file", file);
+      const url = sessionId ? `/upload?session_id=${sessionId}` : "/upload";
+      try {
+        const res = await fetch(url, { method: "POST", body: form });
+        const data = await res.json();
+        if (!res.ok) return setStatus("خطأ: " + (data.detail || res.status));
+        sessionId = data.session_id;
+        setStatus(`تمت المعالجة (${data.chunks} قطعة). اسأل الآن.`);
+        $("question").disabled = false;
+        $("askBtn").disabled = false;
+      } catch (e) {
+        setStatus("تعذّر الاتصال بالخادم");
+      }
+    };
+
+    async function ask() {
+      const question = $("question").value.trim();
+      if (!question || !sessionId) return;
+      const res = await fetch("/search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ session_id: sessionId, question, k: 4 }),
+      });
+      const data = await res.json();
+      const box = $("results");
+      box.replaceChildren();
+      box.hidden = false;
+      if (!data.results || data.results.length === 0) {
+        box.textContent = "لا توجد نتائج.";
+        return;
+      }
+      for (const r of data.results) {
+        const item = document.createElement("div");
+        item.className = "result";
+        const meta = document.createElement("div");
+        meta.className = "meta";
+        meta.textContent = `${r.source} · صفحة ${r.page} · تطابق ${r.score}`;
+        const text = document.createElement("div");
+        text.dir = "auto";
+        text.textContent = r.text;
+        item.append(meta, text);
+        box.append(item);
+      }
+    }
+
+    $("askBtn").onclick = ask;
+    $("question").addEventListener("keydown", (e) => { if (e.key === "Enter") ask(); });
+  </script>
+</body>
+</html>
