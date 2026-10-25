@@ -2,7 +2,7 @@ import tempfile
 import uuid
 from pathlib import Path
 
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi import FastAPI, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
@@ -25,7 +25,7 @@ class SearchRequest(BaseModel):
 
 
 @app.post("/upload")
-def upload(file: UploadFile = File(...), session_id: str | None = None):
+def upload(file: UploadFile, session_id: str | None = None):
     name = Path(file.filename or "").name
     if Path(name).suffix.lower() not in ALLOWED_TYPES:
         raise HTTPException(400, "Only PDF, TXT and MD files are supported")
