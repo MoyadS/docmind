@@ -1,0 +1,27 @@
+Python was created by Guido van Rossum and first released in 1991. It emphasizes code readability and supports multiple programming paradigms, including object-oriented, functional, and procedural programming. Today it is widely used in web development, data science, and artificial intelligence.
+
+Java was developed by James Gosling at Sun Microsystems and released in 1995. Its slogan is write once, run anywhere, because compiled Java code runs on any device with a Java virtual machine. It is heavily used in enterprise software and Android apps.
+
+JavaScript was written by Brendan Eich at Netscape in just ten days in 1995. It runs in every web browser and lets pages react to clicks and load data without reloading. With Node.js it also runs on servers, not only in browsers.
+
+The Amazon rainforest covers about 5.5 million square kilometers across nine countries. It is home to roughly ten percent of all known species on Earth. Deforestation, mainly for cattle ranching and agriculture, is the biggest threat to this ecosystem.
+
+The Sahara is the largest hot desert in the world, covering about nine million square kilometers across North Africa. Daytime temperatures can pass 40 degrees Celsius, and the nights can be very cold. Most of its surface is rocky plateau and gravel, not sand dunes.
+
+Mount Everest, on the border between Nepal and China, is the highest mountain above sea level at 8,849 meters. Climbers face thin air, extreme cold and sudden storms, and most expeditions use supplemental oxygen near the summit.
+
+Espresso is made by forcing hot water at high pressure through finely ground coffee. A good shot takes about 25 to 30 seconds and is topped with a layer of golden foam called crema. Cappuccino adds steamed milk and a thick layer of milk foam to the espresso.
+
+All true tea, whether green, black or oolong, comes from the leaves of the Camellia sinensis plant. The differences come from how the leaves are processed: green tea is barely oxidized, while black tea is fully oxidized, which gives it a darker color and stronger taste.
+
+Compound interest means earning interest on both your original deposit and on the interest already added. For example, 1000 dollars at 7 percent annual interest grows to about 1967 dollars after ten years. The earlier you start saving, the more powerful this effect becomes.
+
+Inflation is a general rise in prices over time. When inflation is high, each unit of money buys fewer goods and services, so the purchasing power of savings falls. Central banks usually try to keep it near two percent per year.
+
+Photosynthesis is the process plants use to turn sunlight, water and carbon dioxide into sugar and oxygen. It happens inside chloroplasts, where the pigment chlorophyll absorbs light, which is also what gives leaves their green color.
+
+دمشق من أقدم العواصم المأهولة في العالم، ويعود تاريخها إلى آلاف السنين. تشتهر بسوقها القديم وبالجامع الأموي، وبالمطبخ الشامي الذي يضم أطباقاً مثل الكبة والفتوش والمحاشي، وبأزقتها الضيقة وبيوتها ذات الأفنية الداخلية والنوافير.
+
+حلب مدينة عريقة في شمال سوريا، تشتهر بقلعتها الضخمة الواقعة على تل مرتفع، وبسوقها المسقوف الطويل، وبصابون الغار الذي يُصنع من زيت الزيتون وزيت الغار، وبتنوع مطبخها وكثرة أنواع الكبة فيه.
+
+القهوة العربية تُحضَّر من حبوب محمصة تحميصاً خفيفاً وتُغلى مع الهيل في دلة نحاسية، وتُقدَّم في فناجين صغيرة بدون سكر، وتُعتبر علامة على الكرم والضيافة عند استقبال الضيوف.

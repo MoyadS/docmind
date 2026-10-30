@@ -1,0 +1,16 @@
+[
+  {"question": "Who invented Java?", "expected": "Gosling"},
+  {"question": "Who wrote JavaScript and how long did it take?", "expected": "Eich"},
+  {"question": "Which language was released in 1991 and focuses on readability?", "expected": "Guido"},
+  {"question": "What is the largest hot desert?", "expected": "Sahara"},
+  {"question": "What is the tallest mountain above sea level?", "expected": "Everest"},
+  {"question": "Which plant do green and black tea come from?", "expected": "Camellia"},
+  {"question": "What happens to the value of savings when prices keep rising?", "expected": "purchasing power"},
+  {"question": "How do plants make sugar from light?", "expected": "chlorophyll"},
+  {"question": "What is the foam on top of an espresso called?", "expected": "crema"},
+  {"question": "Why is money worth more if saved early?", "expected": "Compound interest"},
+  {"question": "وين الجامع الأموي؟", "expected": "دمشق"},
+  {"question": "شو اشتهرت فيه القلعة الكبيرة والصابون؟", "expected": "حلب"},
+  {"question": "كيف بتتحضر القهوة اللي بتنقدم للضيوف؟", "expected": "الهيل"},
+  {"question": "which animals live in the biggest rainforest?", "expected": "Amazon"}
+]

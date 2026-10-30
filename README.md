@@ -68,6 +68,25 @@ src/docmind/
 └── api/             # FastAPI app and web UI
 ```
 
+## Evaluation
+
+Retrieval quality is measured with `eval/run_eval.py` on a small labeled set:
+14 questions (English and Arabic) over a 15-passage corpus with deliberately similar topics
+(Python / Java / JavaScript, Damascus / Aleppo, coffee / tea).
+
+| Setup | Hit@1 | Hit@3 | MRR |
+
+|---|---|---|---|
+
+| Baseline (multilingual MiniLM, 400-char chunks) | 86% | 100% | 0.92 |
+
+Both misses are Arabic questions, so the next step is a stronger multilingual embedding model.
+The test set is small, so treat these numbers as a regression baseline rather than a benchmark.
+
+```bash
+uv run python eval/run_eval.py
+```
+
 ## Roadmap
 
 - [ ] Retrieval evaluation (hit rate and MRR on a labeled question set)
