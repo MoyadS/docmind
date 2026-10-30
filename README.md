@@ -1,5 +1,7 @@
 # DocMind
 
+![CI](https://github.com/MoyadS/docmind/actions/workflows/ci.yml/badge.svg)
+
 Ask questions about your own documents in **Arabic or English**. Upload a PDF, TXT or Markdown file and get the most relevant passages back, ranked by meaning, with the source file and page for each result.
 
 ## Features
