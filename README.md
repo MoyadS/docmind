@@ -75,16 +75,19 @@ Retrieval quality is measured with `eval/run_eval.py` on a small labeled set:
 (Python / Java / JavaScript, Damascus / Aleppo, coffee / tea).
 
 | Setup | Hit@1 | Hit@3 | MRR |
-
 |---|---|---|---|
+| MiniLM, 150-char chunks | 71% | 93% | 0.82 |
+| MiniLM, 250-char chunks | 79% | 100% | 0.89 |
+| MiniLM, 400-char chunks (default) | 86% | 100% | 0.92 |
+| MiniLM, 600-char chunks | 86% | 100% | 0.92 |
+| mpnet-base (1.1 GB), 400-char chunks | 86% | 100% | 0.92 |
 
-| Baseline (multilingual MiniLM, 400-char chunks) | 86% | 100% | 0.92 |
-
-Both misses are Arabic questions, so the next step is a stronger multilingual embedding model.
+A larger multilingual model (mpnet-base, 5x bigger) gave identical aggregate scores: it fixed one Arabic question and broke another. With 14 questions the difference is within noise, so the lighter MiniLM stays the default.
 The test set is small, so treat these numbers as a regression baseline rather than a benchmark.
 
 ```bash
 uv run python eval/run_eval.py
+```
 ```
 
 ## Roadmap

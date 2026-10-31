@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 
 from docmind.config import settings
@@ -6,6 +7,8 @@ from docmind.ingestion.chunker import chunk_pages
 from docmind.ingestion.loader import load_file
 from docmind.retrieval.embedder import Embedder
 from docmind.retrieval.store import VectorStore
+
+sys.stdout.reconfigure(encoding="utf-8")
 
 ROOT = Path(__file__).parent
 K = 3
