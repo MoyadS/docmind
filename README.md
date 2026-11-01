@@ -99,7 +99,9 @@ uv run python eval/run_eval.py
 - [x] Hybrid search (BM25 + vectors, Reciprocal Rank Fusion)
 - [x] CI (lint and tests on every push)
 - [x] Compared a larger embedding model (mpnet-base): no measurable gain, MiniLM stays the default
-- [ ] Held-out evaluation set with paraphrased questions
+- [x] Held-out evaluation set with paraphrased questions (small, author-written)
 - [ ] Reranking
 - [ ] Written answers with citations using a free-tier LLM
 - [ ] Docker image and public demo
+
+A second set of 14 paraphrased questions (`eval/heldout.json`) shows the same pattern: vector-only search scores 86% Hit@1 (MRR 0.92) and hybrid search scores 100% (MRR 1.00), fixing the Arabic questions that pure semantic search ranked second or third. Both sets are small and written by the author, so the numbers show the direction of the improvement rather than production accuracy.

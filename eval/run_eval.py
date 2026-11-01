@@ -19,7 +19,8 @@ hybrid_store = HybridStore(vector_store)
 pages = load_file(ROOT / "corpus.txt")
 hybrid_store.add("eval", chunk_pages(pages, settings.chunk_size, settings.chunk_overlap))
 
-questions = json.loads((ROOT / "questions.json").read_text(encoding="utf-8"))
+questions_file = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "questions.json"
+questions = json.loads(questions_file.read_text(encoding="utf-8"))
 
 
 def evaluate(name, store):

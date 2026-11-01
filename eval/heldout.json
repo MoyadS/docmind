@@ -1,0 +1,16 @@
+[
+  {"question": "Which language lets one build run on any computer, according to its famous motto?", "expected": "Gosling"},
+  {"question": "Who made the scripting language that brings web pages to life in under two weeks?", "expected": "Eich"},
+  {"question": "Which programming language, made by a Dutch developer, is popular for AI work?", "expected": "Guido"},
+  {"question": "Where is the driest, hottest wasteland in northern Africa?", "expected": "Sahara"},
+  {"question": "What is the world's highest peak?", "expected": "Everest"},
+  {"question": "Why does the same amount of cash buy less than it did years ago?", "expected": "purchasing power"},
+  {"question": "Which beverage made from dried leaves differs in flavor depending on fermentation?", "expected": "Camellia"},
+  {"question": "How does a leaf turn sunlight into food?", "expected": "chlorophyll"},
+  {"question": "Where is the planet's biggest jungle and what is endangering it?", "expected": "Amazon"},
+  {"question": "Why do banks reward people who leave their money untouched for a long time?", "expected": "Compound interest"},
+  {"question": "وين بيصنعوا صابون من الزيتون والغار؟", "expected": "حلب"},
+  {"question": "شو بيقدموا للزائر بفنجان صغير بالبيت العربي؟", "expected": "الهيل"},
+  {"question": "أي عاصمة عمرها آلاف السنين وفيها مسجد تاريخي كبير؟", "expected": "دمشق"},
+  {"question": "مين صنع لغة البرمجة الشهيرة بالذكاء الصناعي؟", "expected": "Guido"}
+]
