@@ -81,6 +81,9 @@ Retrieval quality is measured with `eval/run_eval.py` on a small labeled set:
 | MiniLM, 400-char chunks (default) | 86% | 100% | 0.92 |
 | MiniLM, 600-char chunks | 86% | 100% | 0.92 |
 | mpnet-base (1.1 GB), 400-char chunks | 86% | 100% | 0.92 |
+| MiniLM + BM25 hybrid (RRF), 400-char chunks | 100% | 100% | 1.00 |
+
+Hybrid search (vector similarity + BM25 keyword matching, merged with Reciprocal Rank Fusion) fixed both Arabic misses. The question set was written after seeing the baseline failures and shares many words with the passages, which favors keyword matching, so a held-out set of paraphrased questions is the next check.
 
 A larger multilingual model (mpnet-base, 5x bigger) gave identical aggregate scores: it fixed one Arabic question and broke another. With 14 questions the difference is within noise, so the lighter MiniLM stays the default.
 The test set is small, so treat these numbers as a regression baseline rather than a benchmark.
@@ -92,8 +95,11 @@ uv run python eval/run_eval.py
 
 ## Roadmap
 
-- [ ] Retrieval evaluation (hit rate and MRR on a labeled question set)
-- [ ] Hybrid search (BM25 + vectors) and reranking
-- [ ] Stronger multilingual embedding model
+- [x] Retrieval evaluation (Hit@k and MRR on a labeled question set)
+- [x] Hybrid search (BM25 + vectors, Reciprocal Rank Fusion)
+- [x] CI (lint and tests on every push)
+- [x] Compared a larger embedding model (mpnet-base): no measurable gain, MiniLM stays the default
+- [ ] Held-out evaluation set with paraphrased questions
+- [ ] Reranking
 - [ ] Written answers with citations using a free-tier LLM
-- [ ] Docker image, CI and public demo
+- [ ] Docker image and public demo

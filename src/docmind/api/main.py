@@ -10,10 +10,11 @@ from docmind.config import settings
 from docmind.ingestion.chunker import chunk_pages
 from docmind.ingestion.loader import load_file
 from docmind.retrieval.embedder import Embedder
+from docmind.retrieval.hybrid import HybridStore
 from docmind.retrieval.store import VectorStore
 
 app = FastAPI(title="DocMind")
-store = VectorStore(Embedder())
+store = HybridStore(VectorStore(Embedder()))
 ALLOWED_TYPES = {".pdf", ".txt", ".md"}
 STATIC_DIR = Path(__file__).parent / "static"
 
