@@ -12,6 +12,7 @@ Ask questions about your own documents in **Arabic or English**. Upload a PDF, T
 - **Isolated sessions**: each visitor gets a private in-memory collection, and nothing is stored on disk.
 - **Upload limits**: file type and size are validated.
 - **Pluggable LLM layer**: `llm/` and `rag.py` can turn the retrieved passages into a written answer with any model.
+- - **Hybrid retrieval**: semantic vectors plus BM25 keyword search, merged with Reciprocal Rank Fusion.
 
 ## How it works
 
@@ -82,10 +83,14 @@ Retrieval quality is measured with `eval/run_eval.py` on a small labeled set:
 | MiniLM, 600-char chunks | 86% | 100% | 0.92 |
 | mpnet-base (1.1 GB), 400-char chunks | 86% | 100% | 0.92 |
 | MiniLM + BM25 hybrid (RRF), 400-char chunks | 100% | 100% | 1.00 |
+| MiniLM + BM25 hybrid (RRF), 400-char chunks | 100% | 100% | 1.00 |
 
 Hybrid search (vector similarity + BM25 keyword matching, merged with Reciprocal Rank Fusion) fixed both Arabic misses. The question set was written after seeing the baseline failures and shares many words with the passages, which favors keyword matching, so a held-out set of paraphrased questions is the next check.
 
 A larger multilingual model (mpnet-base, 5x bigger) gave identical aggregate scores: it fixed one Arabic question and broke another. With 14 questions the difference is within noise, so the lighter MiniLM stays the default.
+
+Hybrid search (vector similarity + BM25 keyword matching, merged with Reciprocal Rank Fusion) lifted Hit@1 from 86% to 100% (MRR 0.92 to 1.00) and fixed the Arabic questions that pure semantic search ranked second or third. A second set of 14 paraphrased questions (`eval/heldout.json`) shows the same pattern. Both sets are small and written by the author, so the numbers show the direction of the improvement rather than production accuracy.
+
 The test set is small, so treat these numbers as a regression baseline rather than a benchmark.
 
 ```bash
